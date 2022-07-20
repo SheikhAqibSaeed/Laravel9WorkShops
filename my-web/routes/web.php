@@ -61,7 +61,7 @@ Route::get('/about', function () {
 
     // Click About and then open new page 
     Route::get('about', function(){
-        return 'About Page';
+        return 'About Page..';
     });
 
     // Calling the Route for Views
