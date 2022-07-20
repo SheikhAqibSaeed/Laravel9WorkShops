@@ -89,6 +89,10 @@ use Illuminate\Support\Facades\Route;
 
     //Nested Blade Template
     //How to Open Nested Blade files in Laravel
-    Route::get('/test', function(){
-        return view('admin.profile'); // also use (.) & (/)
-    });
+    // Route::get('/test', function(){
+    //     return view('admin.profile'); // also use (.) & (/)
+    // });
+
+//Master Layout in Laravel Blade
+    Route::view('master', 'layouts.master');
+    Route::view('test', 'test');
