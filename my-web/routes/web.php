@@ -76,13 +76,19 @@ use Illuminate\Support\Facades\Route;
 
 //  Pass Dynamic data to Laravel Blade
 
-Route::get('aqib', function(){
-    $name = 'Sheikh Aqib Saeed';
-    // return view('aqib', ['name' => $name]);  
-    // return view('aqib', compact('name'));    // another example passing the key and execute
-    // return view('aqib', compact('name', 'id', 'Color etc' )); // another example
-    // return view('aqib', )->with('name', $name); // another example
+// Route::get('aqib', function(){
+//     $name = 'Sheikh Aqib Saeed';
+//     // return view('aqib', ['name' => $name]);  
+//     // return view('aqib', compact('name'));    // another example passing the key and execute
+//     // return view('aqib', compact('name', 'id', 'Color etc' )); // another example
+//     // return view('aqib', )->with('name', $name); // another example
     
-    //Views may also be returned using the View facade:
-    return View::make('aqib', ['name' => $name]);
-});
+//     //Views may also be returned using the View facade:
+//     return View::make('aqib', ['name' => $name]);
+// });
+
+    //Nested Blade Template
+    //How to Open Nested Blade files in Laravel
+    Route::get('/test', function(){
+        return view('admin.profile'); // also use (.) & (/)
+    });
