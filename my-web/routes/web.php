@@ -81,7 +81,8 @@ Route::get('aqib', function(){
     // return view('aqib', ['name' => $name]);  
     // return view('aqib', compact('name'));    // another example passing the key and execute
     // return view('aqib', compact('name', 'id', 'Color etc' )); // another example
-    return view('aqib', )->with('name', $name); // another example
-
-
+    // return view('aqib', )->with('name', $name); // another example
+    
+    //Views may also be returned using the View facade:
+    return View::make('aqib', ['name' => $name]);
 });
