@@ -1,6 +1,8 @@
 <?php
+use App\Http\Controllers\UserController;
 
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -96,5 +98,10 @@ use Illuminate\Support\Facades\Route;
 //Master Layout in Laravel Blade
     // Route::view('master', 'layouts.master');
     // Route::view('test', 'test');
-        Route::view('user', 'user');
-        Route::view('post', 'post');
+        // Route::view('user', 'user');
+        // Route::view('post', 'post');
+
+
+Route::get('/users', [UserController::class, 'index']);
+
+Route::get('/users/show/{id}', [UserController::class, 'show']);
