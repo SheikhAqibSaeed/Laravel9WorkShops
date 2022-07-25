@@ -112,3 +112,5 @@ use Illuminate\Support\Facades\Route;
 // Resource Controller 
     //  Create Route for PostController 
 Route::resource('posts', PostController::class);
+
+// Connect our Laravel App with Database
