@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -105,3 +106,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/users', [UserController::class, 'index']);
 
 Route::get('/users/show/{id}', [UserController::class, 'show']);
+
+//  Create Route for PostController 
+
+Route::resource('posts', PostController::class);
