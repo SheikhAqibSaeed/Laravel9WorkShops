@@ -102,11 +102,13 @@ use Illuminate\Support\Facades\Route;
         // Route::view('user', 'user');
         // Route::view('post', 'post');
 
+// Open Blade from Controller
+    //  Non-Parameterized Method
+    Route::get('/users', [UserController::class, 'index']);
 
-Route::get('/users', [UserController::class, 'index']);
+    //  Parameterized Method
+    Route::get('/users/show/{id}', [UserController::class, 'show']);
 
-Route::get('/users/show/{id}', [UserController::class, 'show']);
-
-//  Create Route for PostController 
-
+// Resource Controller 
+    //  Create Route for PostController 
 Route::resource('posts', PostController::class);
