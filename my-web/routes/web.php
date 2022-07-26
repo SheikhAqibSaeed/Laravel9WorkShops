@@ -1,7 +1,8 @@
 <?php
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 
 
@@ -114,3 +115,25 @@ use Illuminate\Support\Facades\Route;
 Route::resource('posts', PostController::class);
 
 // Connect our Laravel App with Database
+
+
+// check Laravel App is connected with Database
+// Test database connection
+Route::get('/connection', function(){
+    try {
+        DB::connection()->getPdo();
+        return 'Connected Successfully';
+    }
+    catch(\Exception $ex) 
+    {
+        dd($ex->get_Massage());
+    }
+});
+
+// Route::get('/connection', function(){
+// try {
+//     DB::connection()->getPdo();
+// } catch (\Exception $ex) {
+//     dd($ex->get_Massage());
+// }
+// });
