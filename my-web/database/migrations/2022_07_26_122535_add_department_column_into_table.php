@@ -11,7 +11,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up()    // up method creating the whatever  
     {
         Schema::table('employee', function (Blueprint $table) {
             $table->string('Department')->after('Email');   // after means helps the how to set up and dwon
@@ -23,7 +23,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down()     //  down method for drop the permanent
     {
         Schema::table('employee', function (Blueprint $table) {
             $table->dropColumn('Department');

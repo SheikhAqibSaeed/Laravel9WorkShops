@@ -137,3 +137,14 @@ Route::get('/connection', function(){
 //     dd($ex->get_Massage());
 // }
 // });
+
+
+//  -----Rollback Migrations -----
+//  Rollback Migrations in Laravel & how to work
+// Command line = php artisan migrate:rollback
+//  Rollback jo hy database sy sb Migration delete kr deta hy again create krny k lie Command line 
+//  php artisan migrate
+
+//  ----remove/drop spacific Column------
+// How to remove/drop spacific Column
+// php artisan migrate:rollback --path=database/migrations/2022_07_26_122535_add_department_column_into_table.php
