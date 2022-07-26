@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('Name');
             $table->char('Phone');
             $table->string('Adress');
+            // if you missing the Colunm and then Add Column Into Existing Migration
+            //  Using Command Line
+            $table->string('Email');    // php artisan migrate:fresh and then Include the colunm
             $table->timestamps();
         });
     }
