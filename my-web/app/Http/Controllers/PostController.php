@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -13,7 +13,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $post = Post::all();
+        return $post;
     }
 
     /**
@@ -34,7 +35,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Post::create([
+                    'Name'=> 'Saqib Saeed',
+                    'Phone'=> '124443454',
+                    'Adress'=> '#12 3djdskd',
+                    'Email'=> 'saqib12344@',
+                ]);
+
+                return 'Insert Successfully';
     }
 
     /**

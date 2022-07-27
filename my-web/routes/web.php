@@ -233,14 +233,20 @@ Route::get('data', function(){
 //        return 'Update Completed';
 
 //      How to Delete Record from Database
-$post = Post::find(2);
-if(! $post){
-    return 'Record Not Found in Post';
-}
-else {
-    $post->delete();
+// $post = Post::find(2);
+// if(! $post){
+//     return 'Record Not Found in Post';
+// }
+// else {
+//     $post->delete();
 
-    return 'Delete Successfully'; 
-}
+//     return 'Delete Successfully'; 
+// }
 
 });
+
+//  App\Models\Post;
+// How to acess data from Controller
+//     1. Insert Data 
+Route::get('post', [PostController::class, 'index']);
+Route::get('post/store', [PostController::class, 'store']);
