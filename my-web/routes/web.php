@@ -148,3 +148,11 @@ Route::get('/connection', function(){
 //  ----remove/drop spacific Column------
 // How to remove/drop spacific Column
 // php artisan migrate:rollback --path=database/migrations/2022_07_26_122535_add_department_column_into_table.php
+
+
+// How to Create Foreign Key Using Migration
+// please check database/migrations/employee_table
+        // Create Foreign Key
+    // $table->foreignId('user_id')->constrained();
+    // And then execute command line (php artisan migrate:fresh) 
+
