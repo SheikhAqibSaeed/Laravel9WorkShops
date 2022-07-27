@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::table('employee', function (Blueprint $table) {
             $table->string('Department')->after('Email');   // after means helps the how to set up and dwon
         });
+        Schema::rename('employees', 'employee');
     }
 
     /**
@@ -28,5 +29,7 @@ return new class extends Migration
         Schema::table('employee', function (Blueprint $table) {
             $table->dropColumn('Department');
         });
+
+        
     }
 };

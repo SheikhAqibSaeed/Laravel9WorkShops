@@ -156,3 +156,14 @@ Route::get('/connection', function(){
     // $table->foreignId('user_id')->constrained();
     // And then execute command line (php artisan migrate:fresh) 
 
+//  How to Check Migration Status 
+    // php artisan migrate:status
+
+// Facing Migration to run in Production
+        // Its means that koi migration rehti to ni h
+    // php artisan migrate --force
+
+// How to reset migration
+
+    // The migrate:reset command will roll back all of your application's migrations.
+    // php artisan migrate:reset
