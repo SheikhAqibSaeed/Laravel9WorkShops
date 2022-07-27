@@ -250,3 +250,7 @@ Route::get('data', function(){
 //     1. Insert Data 
 Route::get('post', [PostController::class, 'index']);
 Route::get('post/store', [PostController::class, 'store']);
+//      2. Update Data
+Route::get('post/update', [PostController::class, 'update']);
+//      3. Delete Data
+Route::get('post/destroy', [PostController::class, 'destroy']);

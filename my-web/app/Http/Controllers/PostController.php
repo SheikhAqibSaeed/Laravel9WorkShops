@@ -74,9 +74,17 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update()
     {
-        //
+        $post = Post::find(6);
+        $post->update([
+                
+                    'Name' => 'Aqib',
+                    'Phone' => '03333732',
+                    'Adress' => '#2 dhsksdkjk',
+                    'Email' => 'aqib373@'
+                   ]);
+                   return 'Update Successfully';
     }
 
     /**
@@ -85,8 +93,16 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        $post = Post::find(6);
+        if(! $post){
+         return 'Record Not Found in Post';
+        }
+        else {
+        $post->delete();
+
+        return 'Delete Successfully'; 
+        }
     }
 }
