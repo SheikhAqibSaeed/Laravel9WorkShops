@@ -15,24 +15,24 @@
 <form method="post" action="{{ route('posts.store')}}" style="margin-top: 35px">
 <div class="mb-3">
     <label>Title</label>
-    <input type="text" name="title" class="form-control" placeholder="title">
+    <input type="text" name="title" class="form-control" placeholder="title" required>
 </div>
 <div class="mb-3">
     <label>Discription</label>
-    <textarea class="form-control" name="discription" placeholder="enter a somthing here..."></textarea>
+    <textarea class="form-control" required name="discription" placeholder="enter a somthing here..."></textarea>
 </div>
 <div class="mb-3">
     <label>Published</label>
-    <select name="is_publish" class="form-control">
-        <option disabled selected>Choose Option</option>
+    <select name="is_publish" required class="form-control">
+        <option value="" disabled selected>Choose Option</option>
         <option value="1">Yes</option>
         <option value="0">No</option>
     </select>
 </div>
 <div class="mb-3">
     <label>Active</label>
-        <select name="is_active" class="form-control">
-        <option disabled selected>Choose Option</option>
+        <select name="is_active" required class="form-control">
+        <option value="" disabled selected>Choose Option</option>
         <option value="1">Yes</option>
         <option value="0">No</option>
     </select>
