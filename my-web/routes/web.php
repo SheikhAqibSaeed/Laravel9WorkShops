@@ -184,12 +184,39 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('data', function(){
-    Post::create([
-        'Name'=> 'Aqib Saeed',
-        'Phone'=> '12233454',
-        'Adress'=> '#12 3hdkd',
-        'Email'=> 'aqib12344@',
-    ]);
+//     Post::create([
+//         'Name'=> 'Saqib Saeed',
+//         'Phone'=> '124443454',
+//         'Adress'=> '#12 3djdskd',
+//         'Email'=> 'saqib12344@',
+//     ]);
+    
 
-    return 'Insert Completed';
+   // Fetch All data from Database
+//    $posts = Post::all();
+
+    //  Fetch some data from Database
+
+//    $post = Post::find(4);
+
+   // also Using IF Statement
+
+//    if(! $post){
+//     return 'Post Not Found';
+//    }
+
+//      How to find through Name,Address etc
+//      Use Where means & Operator
+// $post = Post::where('Name', 'Aqib Saeed')->where('Phone', '12233454')->get();
+//      Use orWhere means or Operator
+$post = Post::where('Name', 'Aqib Saeed')->orwhere('Phone', '122354')->get();
+
+// also Using IF Statement
+   if(! $post){
+    return 'Post Not Found';
+   }
+   return $post;
+
+   return 'Insert Completed';
+    
 });
