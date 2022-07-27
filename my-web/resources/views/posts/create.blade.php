@@ -12,18 +12,18 @@
     <div class="row">
         <div class="col-md-6 offset-3 mt-5">
             <h3 class="text-center"> Create Post</h3>
-        <form style="margin-top: 35px">
-  <div class="mb-3">
+<form method="post" action="{{ route('posts.store')}}" style="margin-top: 35px">
+<div class="mb-3">
     <label>Title</label>
     <input type="text" name="title" class="form-control" placeholder="title">
 </div>
 <div class="mb-3">
     <label>Discription</label>
-    <textarea class="form-control" placeholder="enter a somthing here..."></textarea>
+    <textarea class="form-control" name="discription" placeholder="enter a somthing here..."></textarea>
 </div>
 <div class="mb-3">
     <label>Published</label>
-    <select name="" class="form-control">
+    <select name="is_publish" class="form-control">
         <option disabled selected>Choose Option</option>
         <option value="1">Yes</option>
         <option value="0">No</option>
@@ -31,24 +31,13 @@
 </div>
 <div class="mb-3">
     <label>Active</label>
-        <select name="" class="form-control">
+        <select name="is_active" class="form-control">
         <option disabled selected>Choose Option</option>
         <option value="1">Yes</option>
         <option value="0">No</option>
     </select>
 </div>
         <button type="submit" class="btn btn-primary">Submit</button>
-        
-        <!-- static working -->
-        <!-- <a href="test-2" class="btn btn-primary">Go</a> -->
-    
-        <!-- Dynamic working -->
-        <!-- <a href="{{ url('test-2') }}" class="btn btn-primary">Go</a> -->
-
-        <!-- route means jo b hm web sy apna url create krna chahy kr skty ha or wo execute ho jay ga -->
-        <!-- BUt url sy aisa ni kr skty  -->
-        <a href="{{ route('/test.1') }}" class="btn btn-primary">Go</a>
-
     </form>
         </div>
     </div>

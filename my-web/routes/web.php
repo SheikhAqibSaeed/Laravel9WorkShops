@@ -262,12 +262,22 @@ Route::get('data', function(){
 // What is Differece b/w url and route 
 // What are the benifits
 
-Route::get('/admin/test-1', function(){
-    return 'test-1';
-})->name('/test.1');
+// Route::get('/admin/test-1', function(){
+//     return 'test-1';
+// })->name('/test.1');
 
-Route::get('/test-2', function(){
-    return 'test-2';
-})->name('/test.2');
+// Route::get('/test-2', function(){
+//     return 'test-2';
+// })->name('/test.2');
+        
+// <!-- static working -->
+// <!-- <a href="test-2" class="btn btn-primary">Go</a> -->
+
+// <!-- Dynamic working -->
+// <!-- <a href="{{ url('test-2') }}" class="btn btn-primary">Go</a> -->
+
+// <!-- route means jo b hm web sy apna url create krna chahy kr skty ha or wo execute ho jay ga -->
+// <!-- BUt url sy aisa ni kr skty  -->
+// <!-- <a href="{{ route('/test.1') }}" class="btn btn-primary">Go</a> -->
 
 Route::resource('posts', PostController::class);
