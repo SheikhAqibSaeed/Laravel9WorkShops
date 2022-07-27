@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
@@ -105,30 +106,30 @@ use Illuminate\Support\Facades\Route;
 
 // Open Blade from Controller
     //  Non-Parameterized Method
-    Route::get('/users', [UserController::class, 'index']);
+    // Route::get('/users', [UserController::class, 'index']);
 
     //  Parameterized Method
-    Route::get('/users/show/{id}', [UserController::class, 'show']);
+    // Route::get('/users/show/{id}', [UserController::class, 'show']);
 
 // Resource Controller 
     //  Create Route for PostController 
-Route::resource('posts', PostController::class);
+// Route::resource('posts', PostController::class);
 
 // Connect our Laravel App with Database
 
 
 // check Laravel App is connected with Database
 // Test database connection
-Route::get('/connection', function(){
-    try {
-        DB::connection()->getPdo();
-        return 'Connected Successfully';
-    }
-    catch(\Exception $ex) 
-    {
-        dd($ex->get_Massage());
-    }
-});
+// Route::get('/connection', function(){
+//     try {
+//         DB::connection()->getPdo();
+//         return 'Connected Successfully';
+//     }
+//     catch(\Exception $ex) 
+//     {
+//         dd($ex->get_Massage());
+//     }
+// });
 
 // Route::get('/connection', function(){
 // try {
@@ -180,3 +181,15 @@ Route::get('/connection', function(){
 //If you would like to generate a database migration when you generate the model, you may use the --migration or -m option:
 // Class bhi generate kr dy ga or database bhi
     //php artisan make:model Flight --migration
+
+
+Route::get('data', function(){
+    Post::create([
+        'Name'=> 'Aqib Saeed',
+        'Phone'=> '12233454',
+        'Adress'=> '#12 3hdkd',
+        'Email'=> 'aqib12344@',
+    ]);
+
+    return 'Insert Completed';
+});

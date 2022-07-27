@@ -18,7 +18,7 @@ return new class extends Migration
         Schema::create('employee', function (Blueprint $table) {
             $table->id();
             // How to Create Foreign Key Using Migration
-            $table->foreignId('user_id')->constrained();    // constrained() means kis k against foreign key bnani hai
+          //  $table->foreignId('user_id')->constrained();    // constrained() means kis k against foreign key bnani hai
             $table->string('Name');
             $table->char('Phone');
             $table->string('Adress');
