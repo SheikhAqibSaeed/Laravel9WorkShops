@@ -167,3 +167,16 @@ Route::get('/connection', function(){
 
     // The migrate:reset command will roll back all of your application's migrations.
     // php artisan migrate:reset
+
+//  Generating Model Classes
+
+// To get started, let's create an Eloquent model. Models typically live in the app\Models 
+//directory and extend the Illuminate\Database\Eloquent\Model class. You may use the make:model Artisan 
+//command to generate a new model:
+
+// php artisan make:model Flight
+
+//      generate Model Classes and database migration 
+//If you would like to generate a database migration when you generate the model, you may use the --migration or -m option:
+// Class bhi generate kr dy ga or database bhi
+    //php artisan make:model Flight --migration
