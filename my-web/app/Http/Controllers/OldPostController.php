@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -13,7 +13,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $post = Post::all();
+        return $post;
     }
 
     /**
@@ -23,7 +24,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        //
     }
 
     /**
@@ -34,7 +35,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Post::create([
+                    'Name'=> 'Saqib Saeed',
+                    'Phone'=> '124443454',
+                    'Adress'=> '#12 3djdskd',
+                    'Email'=> 'saqib12344@',
+                ]);
+
+                return 'Insert Successfully';
     }
 
     /**
@@ -66,9 +74,17 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update()
     {
-        //
+        $post = Post::find(6);
+        $post->update([
+                
+                    'Name' => 'Aqib',
+                    'Phone' => '03333732',
+                    'Adress' => '#2 dhsksdkjk',
+                    'Email' => 'aqib373@'
+                   ]);
+                   return 'Update Successfully';
     }
 
     /**
@@ -77,8 +93,16 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        $post = Post::find(6);
+        if(! $post){
+         return 'Record Not Found in Post';
+        }
+        else {
+        $post->delete();
+
+        return 'Delete Successfully'; 
+        }
     }
 }
