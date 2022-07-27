@@ -38,8 +38,22 @@
     </select>
 </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+        
+        <!-- static working -->
+        <!-- <a href="test-2" class="btn btn-primary">Go</a> -->
+    
+        <!-- Dynamic working -->
+        <!-- <a href="{{ url('test-2') }}" class="btn btn-primary">Go</a> -->
+
+        <!-- route means jo b hm web sy apna url create krna chahy kr skty ha or wo execute ho jay ga -->
+        <!-- BUt url sy aisa ni kr skty  -->
+        <a href="{{ route('/test.1') }}" class="btn btn-primary">Go</a>
+
     </form>
         </div>
     </div>
+
+    
+
 </body>
 </html>

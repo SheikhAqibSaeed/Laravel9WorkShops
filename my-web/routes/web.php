@@ -255,4 +255,19 @@ Route::get('data', function(){
 // //      3. Delete Data
 // Route::get('post/destroy', [PostController::class, 'destroy']);
 
+//  Create Using in Laravel Using Model
+
+
+//      url() vs route()
+// What is Differece b/w url and route 
+// What are the benifits
+
+Route::get('/admin/test-1', function(){
+    return 'test-1';
+})->name('/test.1');
+
+Route::get('/test-2', function(){
+    return 'test-2';
+})->name('/test.2');
+
 Route::resource('posts', PostController::class);
