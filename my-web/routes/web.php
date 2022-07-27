@@ -209,14 +209,38 @@ Route::get('data', function(){
 //      Use Where means & Operator
 // $post = Post::where('Name', 'Aqib Saeed')->where('Phone', '12233454')->get();
 //      Use orWhere means or Operator
-$post = Post::where('Name', 'Aqib Saeed')->orwhere('Phone', '122354')->get();
+// $post = Post::where('Name', 'Aqib Saeed')->orwhere('Phone', '122354')->get();
 
-// also Using IF Statement
-   if(! $post){
-    return 'Post Not Found';
-   }
-   return $post;
+// // also Using IF Statement
+//    if(! $post){
+//     return 'Post Not Found';
+//    }
+//    return $post;
 
-   return 'Insert Completed';
+//    return 'Insert Completed';
     
+//      Update table from Database
+// $post = Post::find(3);
+// if(! $post){
+//         return 'Post Not Found';
+//        }
+//        $post->update([
+//         'Name' => 'Asif',
+//         'Phone' => '0383732',
+//         'Adress' => '#2 didkjk',
+//         'Email' => 'asif3737@'
+//        ]);
+//        return 'Update Completed';
+
+//      How to Delete Record from Database
+$post = Post::find(2);
+if(! $post){
+    return 'Record Not Found in Post';
+}
+else {
+    $post->delete();
+
+    return 'Delete Successfully'; 
+}
+
 });
