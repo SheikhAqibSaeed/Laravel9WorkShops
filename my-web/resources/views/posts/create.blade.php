@@ -25,29 +25,29 @@
 
 <!-- Create Post Form -->
 
-            <form method="post" action="{{ route('posts.store')}}" style="margin-top: 35px" required id="form">
+            <form method="post" action="{{ route('posts.store')}}" style="margin-top: 35px"  id="form">
 <div class="mb-3">
     <label>Title</label>
-    <input type="text" name="title" required class="form-control" placeholder="title" >
+    <input type="text" name="title"  class="form-control" placeholder="title" value="{{ old('title') }}">
 </div>
 <div class="mb-3">
     <label>Discription</label>
-    <textarea class="form-control" required name="discription" placeholder="enter a somthing here..."></textarea>
+    <textarea class="form-control"  name="discription" placeholder="enter a somthing here...">{{ old('discription') }}</textarea>
 </div>
 <div class="mb-3">
     <label>Published</label>
-    <select name="is_publish" required class="form-control">
+    <select name="is_publish"  class="form-control">
         <option value="" disabled selected>Choose Option</option>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
+        <option @if( old('is_publish') == 1) selected @endif value="1">Yes</option>
+        <option @if( old('is_publish') == 0) selected @endif value="0">No</option>
     </select>
 </div>
 <div class="mb-3">
     <label>Active</label>
-        <select name="is_active" required class="form-control">
+        <select name="is_active"  class="form-control">
         <option value="" disabled selected>Choose Option</option>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
+        <option @if( old('is_active') == 1) selected @endif value="1">Yes</option>
+        <option @if( old('is_active') == 0) selected @endif value="0">No</option>
     </select>
 </div>
         <button type="submit" class="btn btn-primary">Submit</button>
