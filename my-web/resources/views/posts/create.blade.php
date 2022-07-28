@@ -11,7 +11,21 @@
     <div class="row">
         <div class="col-md-6 offset-3 mt-5">
             <h3 class="text-center"> Create Post</h3>
-<form method="post" action="{{ route('posts.store')}}" style="margin-top: 35px" required id="form">
+<!-- /resources/views/post/create.blade.php -->
+
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+<!-- Create Post Form -->
+
+            <form method="post" action="{{ route('posts.store')}}" style="margin-top: 35px" required id="form">
 <div class="mb-3">
     <label>Title</label>
     <input type="text" name="title" required class="form-control" placeholder="title" >
