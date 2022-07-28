@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return Post::all();
     }
 
     /**
@@ -47,8 +47,11 @@ class PostController extends Controller
         // dd('Insert Successfully');
 
         $request->session()->flash('alert-success', 'Post Saved Seccessfully!');
-        
-        return redirect()->route('posts.create');
+        //  Old version route
+        // return redirect()->route('posts.create');
+    
+        // New version route
+        return to_route('posts.create');
     }
 
     /**
