@@ -25,7 +25,7 @@
       <th scope="col">Description</th>
       <th scope="col">Publish</th>
       <th scope="col">Active</th>
-
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -37,6 +37,11 @@
         <!-- // (?) Its called Ternary Operator -->
         <td>{{$post->is_publish == '1' ? 'Yes' : 'No'}}</td>    
         <td>{{$post->is_active  == '1' ? 'Yes' : 'No'}}</td>
+        <td>
+            <a herf="" class="btn btn-success">view</a>
+            <a herf="" class="btn btn-info">Edit</a>
+            <a herf="" class="btn btn-light">Del</a>
+        </td>    
     </tr>
     @endforeach
   </tbody>
