@@ -16,7 +16,8 @@ class Post extends Model
     //     'Email',
     // ];
 
+    protected $fillable = ['title', 'description', 'is_publish', 'is_active'];
         // OR
         // another method for Eloquent 
-    protected $guarded = [];
+    // protected $guarded = [];
 }

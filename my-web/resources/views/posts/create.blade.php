@@ -31,8 +31,8 @@
     <input type="text" name="title"  class="form-control" placeholder="title" value="{{ old('title') }}">
 </div>
 <div class="mb-3">
-    <label>Discription</label>
-    <textarea class="form-control"  name="discription" placeholder="enter a somthing here...">{{ old('discription') }}</textarea>
+    <label>Description</label>
+    <textarea class="form-control"  name="description" placeholder="enter a somthing here...">{{ old('description') }}</textarea>
 </div>
 <div class="mb-3">
     <label>Published</label>

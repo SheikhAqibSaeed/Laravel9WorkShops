@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -36,10 +36,14 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required|min:3|max:12',
-            'discription' => 'required|min:10|max:1000',
-            'is_published' => 'required',
+            'description' => 'required|min:10|max:100',
+            'is_publish' => 'required',
             'is_active' => 'required'
         ]);
+
+        Post::create($request->all());
+
+        dd('Insert Successfully');
     }
 
     /**
