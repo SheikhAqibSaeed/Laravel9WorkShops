@@ -5,17 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-
-    <title>Post</title>
-</head>
+    <link rel="stylesheet" href="{{ asset('assets/parsley.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script></head>
 <body>
     <div class="row">
         <div class="col-md-6 offset-3 mt-5">
             <h3 class="text-center"> Create Post</h3>
-<form method="post" action="{{ route('posts.store')}}" style="margin-top: 35px">
+<form method="post" action="{{ route('posts.store')}}" style="margin-top: 35px" required id="form">
 <div class="mb-3">
     <label>Title</label>
-    <input type="text" name="title" class="form-control" placeholder="title" required>
+    <input type="text" name="title" required class="form-control" placeholder="title" >
 </div>
 <div class="mb-3">
     <label>Discription</label>
@@ -41,8 +40,9 @@
     </form>
         </div>
     </div>
-
-    
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.1/parsley.min.js"></script>
+<script>
+     $('#form').parsley();
+</script>
 </body>
 </html>
