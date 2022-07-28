@@ -34,8 +34,9 @@
         <td>{{$post->id}}</td>
         <td>{{$post->title}}</td>
         <td>{{$post->description}}</td>
-        <td>{{$post->is_publish}}</td>
-        <td>{{$post->is_active}}</td>
+        <!-- // (?) Its called Ternary Operator -->
+        <td>{{$post->is_publish == '1' ? 'Yes' : 'No'}}</td>    
+        <td>{{$post->is_active  == '1' ? 'Yes' : 'No'}}</td>
     </tr>
     @endforeach
   </tbody>
@@ -43,6 +44,11 @@
 @else
 <h3 class="text-center text-warning mt-5">Page Not Found</h3>
 @endif
+
+<!-- Pagination -->
+<!-- {{ $posts->render() }} -->
+{{ $posts->links() }}
+
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.1/parsley.min.js"></script>
