@@ -262,9 +262,9 @@ Route::get('data', function(){
 // What is Differece b/w url and route 
 // What are the benifits
 
-// Route::get('/admin/test-1', function(){
-//     return 'test-1';
-// })->name('/test.1');
+Route::get('/admin/test-1', function(){
+    return 'test-1';
+})->name('/test.1');
 
 // Route::get('/test-2', function(){
 //     return 'test-2';
@@ -282,7 +282,7 @@ Route::get('data', function(){
 
 Route::resource('posts', PostController::class);
 
-
+//      Create Session and Forget Session in Laravel
 Route::get('test', function(){
 
     Session::put('login', 'You are Login');
@@ -303,3 +303,5 @@ Route::get('test', function(){
     }
 
 });
+
+// Route::get('posts', PostController::class);

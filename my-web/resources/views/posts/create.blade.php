@@ -23,8 +23,16 @@
 </div>
 @endif
 
-<!-- Create Post Form -->
+   
 
+<!-- Create Post Form -->
+@if (Session::has('alert-success'))
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Success!</strong> {{ session::get('alert-success') }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
             <form method="post" action="{{ route('posts.store')}}" style="margin-top: 35px"  id="form">
 <div class="mb-3">
     <label>Title</label>

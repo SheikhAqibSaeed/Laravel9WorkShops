@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Post;
+use App\Routes\Web;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -43,7 +44,11 @@ class PostController extends Controller
 
         Post::create($request->all());
 
-        dd('Insert Successfully');
+        // dd('Insert Successfully');
+
+        $request->session()->flash('alert-success', 'Post Saved Seccessfully!');
+        
+        return redirect()->route('posts.create');
     }
 
     /**
