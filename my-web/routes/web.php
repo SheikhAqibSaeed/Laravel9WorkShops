@@ -281,3 +281,25 @@ Route::get('data', function(){
 // <!-- <a href="{{ route('/test.1') }}" class="btn btn-primary">Go</a> -->
 
 Route::resource('posts', PostController::class);
+
+
+Route::get('test', function(){
+
+    Session::put('login', 'You are Login');
+    //  How to destroy session.
+    // Session::forget('login'); // login destroy
+    // Session::forget('register'); // registration destroy
+    // Session::forget('test');
+
+    // How to all destroy session
+    Session::flush();   // This Session is All Destroy
+
+    if(Session::has('login')){
+        return 'session set';
+    }
+    else
+    {
+        return 'not set';
+    }
+
+});
