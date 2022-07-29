@@ -17,7 +17,7 @@ class PostController extends Controller
         // $posts = Post::all();
         // $posts = Post::get();
         // $posts = Post::paginate(10);
-        $posts = Post::cursorPaginate(10);  // Previous & Next Pages
+        $posts = Post::simplepaginate(5);  // Previous & Next Pages
 
 
         return view('posts.index', ['posts' => $posts]);
