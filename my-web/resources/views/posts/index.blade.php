@@ -55,8 +55,9 @@
                         <td id="outer">
                             <a href="{{ route('posts.show', $post->id) }}" class="btn btn-success inner"><i class="fa fa-eye"></i></a>
                             <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info inner"><i class="fa fa-edit"></i></a>
-                            <form class="inner" action="">
+                            <form method="post" class="inner" action="{{ route('posts.destroy', $post->id)}}">
                                 @csrf
+                                @method('delete')
                                 <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                             </form>
                         </td>
