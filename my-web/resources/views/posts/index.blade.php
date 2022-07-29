@@ -54,7 +54,7 @@
                         <td>{{$post->is_active  == '1' ? 'Yes' : 'No'}}</td>
                         <td id="outer">
                             <a href="{{ route('posts.show', $post->id) }}" class="btn btn-success inner"><i class="fa fa-eye"></i></a>
-                            <a href="" class="btn btn-info inner"><i class="fa fa-edit"></i></a>
+                            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info inner"><i class="fa fa-edit"></i></a>
                             <form class="inner" action="">
                                 @csrf
                                 <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
