@@ -48,13 +48,13 @@
                     <tr>
                         <td>{{$post->id}}</td>
                         <td>{{$post->title}}</td>
-                        <td>{{$post->description}}</td>
+                        <td>{{Str::limit($post->description, '15')}}</td>
                         <!-- // (?) Its called Ternary Operator -->
                         <td>{{$post->is_publish == '1' ? 'Yes' : 'No'}}</td>
                         <td>{{$post->is_active  == '1' ? 'Yes' : 'No'}}</td>
                         <td id="outer">
-                            <a herf="" class="btn btn-success inner"><i class="fa fa-eye"></i></a>
-                            <a herf="" class="btn btn-info inner"><i class="fa fa-edit"></i></a>
+                            <a href="{{ route('posts.show', $post->id) }}" class="btn btn-success inner"><i class="fa fa-eye"></i></a>
+                            <a href="" class="btn btn-info inner"><i class="fa fa-edit"></i></a>
                             <form class="inner" action="">
                                 @csrf
                                 <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
