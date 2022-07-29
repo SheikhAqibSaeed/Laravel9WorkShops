@@ -7,7 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('assets/parsley.css') }}">
+        <link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <link rel="stylesheet" href="{{ asset('assets/parsley.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/toastr.min.css') }}">
     <style>
     #outer 
     {
@@ -30,7 +34,7 @@
     <div class="row">
         <div class="col-md-6 offset-3 mt-5">
             <h3 class="text-center">Post</h3>
-
+            <a href="{{ route('posts.create') }}" class="btn btn-info mb-3">Add Post</a>
             @if(count($posts) > 0)
             <table class="table table-bordered">
                 <thead class="table-dark">
@@ -82,6 +86,20 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+    </script>
+    <script src="{{ asset('asset/js/toastr.min.js') }}"></script>
+    <script>
+        @if (Session::has('alert-success'))
+        toastr["success"]("{{ Session::get('alert-success') }} ");
+        @endif
+
+        @if (Session::has('alert-info'))
+        toastr["info"]("{{ Session::get('alert-info') }} ");
+        @endif
+
+        @if (Session::has('alert-success'))
+        toastr["success"]("{{ Session::get('alert-success') }} ");
+        @endif
     </script>
 </body>
 

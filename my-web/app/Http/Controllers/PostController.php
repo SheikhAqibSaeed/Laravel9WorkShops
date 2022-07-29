@@ -17,7 +17,7 @@ class PostController extends Controller
         // $posts = Post::all();
         // $posts = Post::get();
         // $posts = Post::paginate(10);
-        $posts = Post::simplepaginate(5);  // Previous & Next Pages
+        $posts = Post::paginate(5);  // Previous & Next Pages
 
 
         return view('posts.index', ['posts' => $posts]);
@@ -43,7 +43,7 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required|min:3|max:12',
-            'description' => 'required|min:10|max:100',
+            'description' => 'required|min:10|max:1000',
             'is_publish' => 'required',
             'is_active' => 'required'
         ]);
@@ -57,7 +57,7 @@ class PostController extends Controller
         // return redirect()->route('posts.create');
     
         // New version route
-        return to_route('posts.create');
+        return to_route('posts.index');
     }
 
     /**
@@ -132,7 +132,7 @@ class PostController extends Controller
             abort(404);
         }
         $post->delete();
-        $request->session()->flash('alert-info', 'Post Delete Successfully');
+        $request->session()->flash('alert-success', 'Post Delete Successfully');
         return to_route('posts.index');
     
     }
