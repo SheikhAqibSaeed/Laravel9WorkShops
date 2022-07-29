@@ -99,9 +99,26 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $request->validate([
+            'title' => 'required|min:3|max:12',
+            'description' => 'required|min:10|max:1000',
+            'is_publish' => 'required',
+            'is_active' => 'required'
+        ]);
 
+        $post = post::find($id);
+        if(! $post){
+            abort(404);
+        }
+        $post->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'is_publish'=> $request->is_publish,
+            'is_active' => $request->is_active
+        ]);
+        $request->session()->flash('alert-info', 'Post Updated Successfully');
+        return to_route('posts.index');
+    }
     /**
      * Remove the specified resource from storage.
      *
