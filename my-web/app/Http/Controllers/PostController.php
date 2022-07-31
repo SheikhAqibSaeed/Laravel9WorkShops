@@ -58,6 +58,9 @@ class PostController extends Controller
     
         // New version route
         return to_route('posts.index');
+        {          
+            Toastr::success('Post added successfully :)','Success');
+        } 
     }
 
     /**
