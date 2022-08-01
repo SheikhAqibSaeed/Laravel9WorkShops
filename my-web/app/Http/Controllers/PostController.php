@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\Post\CreateRequest;
+use App\Http\Requests\Post\UpdateRequest;
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Routes\Web;
 use Illuminate\Http\Request;
@@ -39,14 +42,8 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        $request->validate([
-            'title' => 'required|min:3|max:12',
-            'description' => 'required|min:10|max:1000',
-            'is_publish' => 'required',
-            'is_active' => 'required'
-        ]);
 
         Post::create($request->all());
 
@@ -100,14 +97,8 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
-        $request->validate([
-            'title' => 'required|min:3|max:12',
-            'description' => 'required|min:10|max:1000',
-            'is_publish' => 'required',
-            'is_active' => 'required'
-        ]);
 
         $post = post::find($id);
         if(! $post){
