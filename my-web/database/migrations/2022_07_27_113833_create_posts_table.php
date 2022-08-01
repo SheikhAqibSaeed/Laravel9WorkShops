@@ -27,7 +27,6 @@ return new class extends Migration
             $table->string('title');
             $table->char('description');
             $table->boolean('is_publish');
-            $table->boolean('is_active');
             $table->timestamps();
         });
     }
