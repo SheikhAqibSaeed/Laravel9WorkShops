@@ -22,10 +22,10 @@ class PostController extends Controller
         // $posts = Post::paginate(10);
 
         // withTrashed() Jo delete hui ho wo displsy ni hoti
-        // $posts = Post::withTrashed()->paginate(5);  // Previous & Next Pages
+        $posts = Post::withTrashed()->paginate(5);  // Previous & Next Pages
         
         // onlyTrashed() jo delete ni hui hoti
-        $posts = Post::onlyTrashed()->paginate(5);
+        // $posts = Post::onlyTrashed()->paginate(5);
         return view('posts.index', ['posts' => $posts]);
     }
 

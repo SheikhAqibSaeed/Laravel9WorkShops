@@ -62,8 +62,9 @@
                                 @method('delete')
                                 <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                             </form>
+                            @if ($post->trashed())  <!--Its means that Trashed and Not Trashed-->
                             <a href="{{ route('posts.soft-delete', $post->id) }}" class="btn btn-warning inner"><i class="fa fa-undo"></i></a>
-
+                            @endif
                         </td>
                     </tr>
                     @endforeach
@@ -130,7 +131,7 @@
         @if (Session::has('alert-message'))
             toastr["info"]("{{ Session::get('alert-message') }}");
         @endif
-        
+
 
     </script>
 </body>
