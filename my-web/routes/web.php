@@ -305,3 +305,5 @@ Route::get('test', function(){
 });
 
 Route::resource('posts', PostController::class);
+
+Route::get('posts/soft-delete/{id}', [PostController::class, 'softDelete'])->name('posts.soft-delete');

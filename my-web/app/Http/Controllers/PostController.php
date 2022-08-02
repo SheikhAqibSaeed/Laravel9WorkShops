@@ -20,9 +20,12 @@ class PostController extends Controller
         // $posts = Post::all();
         // $posts = Post::get();
         // $posts = Post::paginate(10);
-        $posts = Post::paginate(5);  // Previous & Next Pages
 
-
+        // withTrashed() Jo delete hui ho wo displsy ni hoti
+        // $posts = Post::withTrashed()->paginate(5);  // Previous & Next Pages
+        
+        // onlyTrashed() jo delete ni hui hoti
+        $posts = Post::onlyTrashed()->paginate(5);
         return view('posts.index', ['posts' => $posts]);
     }
 
@@ -129,5 +132,20 @@ class PostController extends Controller
         $request->session()->flash('alert-success', 'Post Delete Successfully');
         return to_route('posts.index');
     
+    }
+
+    public function softDelete(Request $request, $id)
+    {
+        // return $id;
+        $post = Post::onlyTrashed()->find($id);
+        if(! $post){
+            abort(404);
+        }
+        // return $post;
+        $post->update([
+            'deleted_at' => null
+        ]);
+        $request->session()->flash('alert-message', 'Post Recovered Successfully');
+        return to_route('posts.index');
     }
 }

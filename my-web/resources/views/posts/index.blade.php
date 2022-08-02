@@ -62,6 +62,8 @@
                                 @method('delete')
                                 <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                             </form>
+                            <a href="{{ route('posts.soft-delete', $post->id) }}" class="btn btn-warning inner"><i class="fa fa-undo"></i></a>
+
                         </td>
                     </tr>
                     @endforeach
@@ -128,6 +130,7 @@
         @if (Session::has('alert-message'))
             toastr["info"]("{{ Session::get('alert-message') }}");
         @endif
+        
 
     </script>
 </body>
