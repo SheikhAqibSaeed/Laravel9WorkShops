@@ -62,7 +62,7 @@
                                 @method('delete')
                                 <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                             </form>
-                            @if ($post->trashed())  <!--Its means that Trashed and Not Trashed-->
+                            @if ($post->trashed())  <!--Its means that show all Trashed and Not Trashed-->
                             <a href="{{ route('posts.soft-delete', $post->id) }}" class="btn btn-warning inner"><i class="fa fa-undo"></i></a>
                             @endif
                         </td>

@@ -5,7 +5,9 @@ use App\Http\Requests\Post\CreateRequest;
 use App\Http\Requests\Post\UpdateRequest;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
+use App\Http\Controllers\Toast;
 use App\Routes\Web;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -23,7 +25,7 @@ class PostController extends Controller
 
         // withTrashed() Jo delete hui ho wo displsy ni hoti
         $posts = Post::withTrashed()->paginate(5);  // Previous & Next Pages
-        
+
         // onlyTrashed() jo delete ni hui hoti
         // $posts = Post::onlyTrashed()->paginate(5);
         return view('posts.index', ['posts' => $posts]);
@@ -48,19 +50,27 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
 
-        Post::create($request->all());
-
+        // Post::create($request->all());
+        //      or
+        //  One to One Relationship
+        Post::create([
+            'title' => $request->title,
+            'user_id' => 1,
+            'description' => $request->description,
+            'is_publish'=> $request->is_publish,
+            'is_active' => $request->is_active
+        ]);
         // dd('Insert Successfully');
 
         $request->session()->flash('alert-success', 'Post Saved Seccessfully!');
         //  Old version route
         // return redirect()->route('posts.create');
-    
+
         // New version route
         return to_route('posts.index');
-        {          
+        {
             Toastr::success('Post added successfully :)','Success');
-        } 
+        }
     }
 
     /**
@@ -90,7 +100,7 @@ class PostController extends Controller
         if(! $post){
             abort(404);
         }
-        return view('posts.edit' , compact('post'));  
+        return view('posts.edit' , compact('post'));
     }
 
     /**
@@ -131,7 +141,7 @@ class PostController extends Controller
         $post->delete();
         $request->session()->flash('alert-success', 'Post Delete Successfully');
         return to_route('posts.index');
-    
+
     }
 
     public function softDelete(Request $request, $id)

@@ -5,6 +5,7 @@ use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 
 /*
@@ -36,7 +37,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/user/{name?}',function($name = 'Aqib'){
 
 //     echo "Name: ".$name;
-   
+
 //     });
 
     //Regular Expression Constraints
@@ -44,11 +45,11 @@ use Illuminate\Support\Facades\Route;
     // Route::get('/user/{name}', function ($name) {
     //     return "Letter Route Working with Upper Case & Lower Case";
     // })->where('name', '[A-Za-z]+');
-     
+
     // Route::get('/user/{id}', function ($id) {
-    //      return 'Route Only Numeric :' . $id; 
+    //      return 'Route Only Numeric :' . $id;
     // })->where('id','[0-9]+' );
-     
+
     // Route::get('/user/{id}/{name}', function ($id, $name) {
     //     return 'Numeric and Char';
     // })->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
@@ -64,7 +65,7 @@ use Illuminate\Support\Facades\Route;
     //     return '<a href="/about">About</a>';
     // });
 
-    // Click About and then open new page 
+    // Click About and then open new page
     // Route::get('about', function(){
     //     return 'About Page..';
     // });
@@ -83,11 +84,11 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('aqib', function(){
 //     $name = 'Sheikh Aqib Saeed';
-//     // return view('aqib', ['name' => $name]);  
+//     // return view('aqib', ['name' => $name]);
 //     // return view('aqib', compact('name'));    // another example passing the key and execute
 //     // return view('aqib', compact('name', 'id', 'Color etc' )); // another example
 //     // return view('aqib', )->with('name', $name); // another example
-    
+
 //     //Views may also be returned using the View facade:
 //     return View::make('aqib', ['name' => $name]);
 // });
@@ -111,8 +112,8 @@ use Illuminate\Support\Facades\Route;
     //  Parameterized Method
     // Route::get('/users/show/{id}', [UserController::class, 'show']);
 
-// Resource Controller 
-    //  Create Route for PostController 
+// Resource Controller
+    //  Create Route for PostController
 // Route::resource('posts', PostController::class);
 
 // Connect our Laravel App with Database
@@ -125,7 +126,7 @@ use Illuminate\Support\Facades\Route;
 //         DB::connection()->getPdo();
 //         return 'Connected Successfully';
 //     }
-//     catch(\Exception $ex) 
+//     catch(\Exception $ex)
 //     {
 //         dd($ex->get_Massage());
 //     }
@@ -143,7 +144,7 @@ use Illuminate\Support\Facades\Route;
 //  -----Rollback Migrations -----
 //  Rollback Migrations in Laravel & how to work
 // Command line = php artisan migrate:rollback
-//  Rollback jo hy database sy sb Migration delete kr deta hy again create krny k lie Command line 
+//  Rollback jo hy database sy sb Migration delete kr deta hy again create krny k lie Command line
 //  php artisan migrate
 
 //  ----remove/drop spacific Column------
@@ -155,9 +156,9 @@ use Illuminate\Support\Facades\Route;
 // please check database/migrations/employee_table
         // Create Foreign Key
     // $table->foreignId('user_id')->constrained();
-    // And then execute command line (php artisan migrate:fresh) 
+    // And then execute command line (php artisan migrate:fresh)
 
-//  How to Check Migration Status 
+//  How to Check Migration Status
     // php artisan migrate:status
 
 // Facing Migration to run in Production
@@ -171,13 +172,13 @@ use Illuminate\Support\Facades\Route;
 
 //  Generating Model Classes
 
-// To get started, let's create an Eloquent model. Models typically live in the app\Models 
-//directory and extend the Illuminate\Database\Eloquent\Model class. You may use the make:model Artisan 
+// To get started, let's create an Eloquent model. Models typically live in the app\Models
+//directory and extend the Illuminate\Database\Eloquent\Model class. You may use the make:model Artisan
 //command to generate a new model:
 
 // php artisan make:model Flight
 
-//      generate Model Classes and database migration 
+//      generate Model Classes and database migration
 //If you would like to generate a database migration when you generate the model, you may use the --migration or -m option:
 // Class bhi generate kr dy ga or database bhi
     //php artisan make:model Flight --migration
@@ -190,7 +191,7 @@ Route::get('data', function(){
 //         'Adress'=> '#12 3djdskd',
 //         'Email'=> 'saqib12344@',
 //     ]);
-    
+
 
    // Fetch All data from Database
 //    $posts = Post::all();
@@ -218,7 +219,7 @@ Route::get('data', function(){
 //    return $post;
 
 //    return 'Insert Completed';
-    
+
 //      Update table from Database
 // $post = Post::find(3);
 // if(! $post){
@@ -240,14 +241,14 @@ Route::get('data', function(){
 // else {
 //     $post->delete();
 
-//     return 'Delete Successfully'; 
+//     return 'Delete Successfully';
 // }
 
 });
 
 //  App\Models\Post;
 // How to acess data from Controller
-//     1. Insert Data 
+//     1. Insert Data
 // Route::get('post', [PostController::class, 'index']);
 // Route::get('post/store', [PostController::class, 'store']);
 // //      2. Update Data
@@ -259,7 +260,7 @@ Route::get('data', function(){
 
 
 //      url() vs route()
-// What is Differece b/w url and route 
+// What is Differece b/w url and route
 // What are the benifits
 
 // Route::get('/admin/test-1', function(){
@@ -269,7 +270,7 @@ Route::get('data', function(){
 // Route::get('/test-2', function(){
 //     return 'test-2';
 // })->name('/test.2');
-        
+
 // <!-- static working -->
 // <!-- <a href="test-2" class="btn btn-primary">Go</a> -->
 
@@ -304,6 +305,11 @@ Route::get('test', function(){
 
 });
 
-Route::resource('posts', PostController::class);
+// Route::resource('posts', PostController::class);
 
-Route::get('posts/soft-delete/{id}', [PostController::class, 'softDelete'])->name('posts.soft-delete');
+// Route::get('posts/soft-delete/{id}', [PostController::class, 'softDelete'])->name('posts.soft-delete');
+
+Route::get('test', function(){
+    $user = User::first();
+    return $user->post;
+});
