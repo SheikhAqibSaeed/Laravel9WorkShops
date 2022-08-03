@@ -46,6 +46,10 @@ class User extends Authenticatable
         // return $this->hasOne('\App\Models\Post');
         //      or
         //      One to One Relationship
-        return $this->hasOne(Post::class, 'user_id', 'id');
+        // return $this->hasOne(Post::class, 'user_id', 'id');
+        return $this->hasOne(Post::class);  // same results
+
+        
+
     }
 }

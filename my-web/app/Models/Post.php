@@ -20,4 +20,9 @@ class Post extends Model
         // OR
         // another method for Eloquent
     // protected $guarded = [];
+
+    public function user()  // User() Name of Relationship
+    {
+        return $this->belongsTo(User::class);   // belongsTo() means Inverse function
+    }
 }
