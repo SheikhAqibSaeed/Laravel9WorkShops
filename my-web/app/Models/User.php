@@ -41,15 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function post()
+    public function posts()
     {
         // return $this->hasOne('\App\Models\Post');
         //      or
         //      One to One Relationship
         // return $this->hasOne(Post::class, 'user_id', 'id');
-        return $this->hasOne(Post::class);  // same results
+        // return $this->hasOne(Post::class);  // same results
 
-        
-
+        return $this->hasMany(Post::class)->where('title', 'Quam eu ut esse cor');     // If we get single data show when we use (where)
     }
 }

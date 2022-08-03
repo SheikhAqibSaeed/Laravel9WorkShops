@@ -313,8 +313,9 @@ Route::get('test', function(){
     // $user = User::first();
     // return $user->post;
 
-    $post = Post::first();
-    {
-        return $post->user;
-    }
+    // $post = Post::first();
+    // return $post->user;
+
+    $user = User::first();
+    return $user->posts;
 });
