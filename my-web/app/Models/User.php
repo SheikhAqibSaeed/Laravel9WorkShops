@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Egulias\EmailValidator\Parser\Comment;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -49,6 +50,13 @@ class User extends Authenticatable
         // return $this->hasOne(Post::class, 'user_id', 'id');
         // return $this->hasOne(Post::class);  // same results
 
-        return $this->hasMany(Post::class)->where('title', 'Quam eu ut esse cor');     // If we get single data show when we use (where)
+        // return $this->hasMany(Post::class)->where('title', 'Quam eu ut esse cor');     // If we get single data show when we use (where)
+        return $this->hasMany(Post::class);
+    }
+    public function postComment()
+
+    {
+        // return 'test';
+        return $this->hasOneThrough(Comment::class, Post::class);
     }
 }

@@ -286,22 +286,22 @@ Route::get('data', function(){
 //      Create Session and Forget Session in Laravel
 Route::get('test', function(){
 
-    Session::put('login', 'You are Login');
+    // Session::put('login', 'You are Login');
     //  How to destroy session.
     // Session::forget('login'); // login destroy
     // Session::forget('register'); // registration destroy
     // Session::forget('test');
 
     // How to all destroy session
-    Session::flush();   // This Session is All Destroy
+    // Session::flush();   // This Session is All Destroy
 
-    if(Session::has('login')){
-        return 'session set';
-    }
-    else
-    {
-        return 'not set';
-    }
+    // if(Session::has('login')){
+    //     return 'session set';
+    // }
+    // else
+    // {
+    //     return 'not set';
+    // }
 
 });
 
@@ -316,6 +316,9 @@ Route::get('test', function(){
     // $post = Post::first();
     // return $post->user;
 
+    // $user = User::first();
+    // return $user->posts;
+
     $user = User::first();
-    return $user->posts;
+    return $user;
 });
