@@ -319,6 +319,9 @@ Route::get('test', function(){
     // $user = User::first();
     // return $user->posts;
 
+    // $user = User::first();
+    // return $user;
+
     $user = User::first();
     return $user;
 });
