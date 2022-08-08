@@ -26,5 +26,8 @@ class Post extends Model
         return $this->belongsTo(User::class);   // belongsTo() means Inverse function
     }
 
-   
+   public function tags()
+   {
+    return $this->morphToMany(Tag::class, 'taggable');
+   }
 }

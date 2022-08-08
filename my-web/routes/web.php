@@ -343,7 +343,10 @@ Route::get('test', function(){
     // $user->roles()->sync(3);    // id 3 only show other id's remove
     // return 'Submited';
 
-    $user = User::first();
-    return $user->image;
+    // $user = User::first();
+    // return $user->image;
+
+    $post = Post::first();
+    return $post->tags;
 
 });
