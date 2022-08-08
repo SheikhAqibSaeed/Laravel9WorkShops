@@ -329,8 +329,17 @@ Route::get('test', function(){
     $user = User::first();
     $role = Role::first();
 
-    return $user->roles()->attach($role); // Insert data
+    // return $user->roles()->attach($role); // Insert data
 
     // $user->roles()->detach($role);   // Delete data
-    return $user->roles;    // get data
+    // return $user->roles;    // get data
+
+    $user = User::first();
+
+    // $user->roles()->attach([1,2,3]);
+
+    // $user->roles()->detach([1,2]);
+
+    $user->roles()->sync(3);    // id 3 only show other id's remove
+    return 'Submited';
 });
