@@ -340,6 +340,10 @@ Route::get('test', function(){
 
     // $user->roles()->detach([1,2]);
 
-    $user->roles()->sync(3);    // id 3 only show other id's remove
-    return 'Submited';
+    // $user->roles()->sync(3);    // id 3 only show other id's remove
+    // return 'Submited';
+
+    $user = User::first();
+    return $user->image;
+
 });
