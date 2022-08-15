@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,7 +22,14 @@ class PostFactory extends Factory
             'description' => $this->faker->sentence(),
             'is_publish' => rand(0, 1),
             'is_active' => rand(0, 1),
-            'user_id' => 1,
+            // 'user_id' => 1,
+
+            // 'user_id' => User::factory(1),  //  One user with Multi data
+
+
+            'user_id' => User::factory(),    //  Now add new users and posts
+
+
         ];
     }
 }

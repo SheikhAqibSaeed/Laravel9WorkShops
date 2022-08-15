@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Post;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,6 +22,20 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        Post::factory(1)->create();
+
+        // Post::factory(10)->create();
+
+        // Post::factory(10)->create([
+        //     'title' => 'Laravel 9'
+        // ]);
+
+        Post::factory()->count(10)->state(new Sequence(
+            ['is_active' => '1'],
+            ['is_active' => '0'],
+
+            ['is_publish' => '1'],
+            ['is_publish' => '0'],
+
+        ))->create();
     }
 }
