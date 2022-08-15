@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Post;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Eloquent\Factories\Sequence;
@@ -63,6 +64,35 @@ class DatabaseSeeder extends Seeder
         // ->create();
 
         // Also use this method
-        User::factory()->hasPosts(5)->create();
+        // User::factory()->hasPosts(5)->create();
+
+        //  Specific user find
+        $user = User::find(1);
+        if($user){
+            Post::factory()
+            ->count(5)
+            ->for(User::factory())
+            ->create();
+        }
+
+        //   Reverse   Generate Fake data with Many to Many Relationship
+        // Post::factory()
+        // ->count(5)
+        // ->for(User::factory())   // for we use the relations
+        // ->create();
+
+        //  Change the Column name
+
+            // Post::factory()
+            // ->count(5)
+            // ->for(User::factory()->state(
+            //     ['name' => 'Aqib Saeed']
+            // ))
+            // ->create();
+
+            User::factory()
+            ->has(Role::factory()->count(1))
+            ->create();
+
     }
 }
