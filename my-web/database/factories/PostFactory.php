@@ -27,8 +27,8 @@ class PostFactory extends Factory
             // 'user_id' => User::factory(1),  //  One user with Multi data
 
 
-            'user_id' => User::factory(),    //  Now add new users and posts
-
+            // 'user_id' => User::factory(),    //  Now add new users and posts
+            'user_id' => 1,
 
         ];
     }

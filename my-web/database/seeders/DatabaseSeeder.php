@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,13 +30,27 @@ class DatabaseSeeder extends Seeder
         //     'title' => 'Laravel 9'
         // ]);
 
+        // Post::factory()->count(10)->state(new Sequence(
+        //     ['is_active' => '1'],
+        //     ['is_active' => '0'],
+
+        //     ['is_publish' => '1'],
+        //     ['is_publish' => '0'],
+
+        // ))->create();
+
+        // Jitni bhi foreignKey ho ge phly usy disable kry phr empty or phr enable
+        Schema::disableForeignKeyConstraints();
+        Post::truncate();
+        Schema::enableForeignKeyConstraints();
+
         Post::factory()->count(10)->state(new Sequence(
-            ['is_active' => '1'],
-            ['is_active' => '0'],
+                ['is_active' => '1'],
+                ['is_active' => '0'],
 
-            ['is_publish' => '1'],
-            ['is_publish' => '0'],
+                ['is_publish' => '1'],
+                ['is_publish' => '0'],
 
-        ))->create();
+            ))->create();
     }
 }
