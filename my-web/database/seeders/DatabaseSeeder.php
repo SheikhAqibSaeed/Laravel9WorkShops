@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Post;
 use App\Models\Role;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Eloquent\Factories\Sequence;
@@ -90,9 +91,21 @@ class DatabaseSeeder extends Seeder
             // ))
             // ->create();
 
-            User::factory()
-            ->has(Role::factory()->count(1))
-            ->create();
+            // User::factory()
+            // ->has(Role::factory()->count(1))
+            // ->create();
 
+            //  Many to Many Polymorphic relationship
+            // Post::factory()
+            // ->hasAttached(
+            // Tag::factory()->count(4),
+            // ['tag_id' => 1]     // Add manual id
+            // )
+            // ->create();
+
+            //      Also use
+            Post::factory()
+            ->hasTag(3,['tag_id' => 1])
+            ->create();
     }
 }
