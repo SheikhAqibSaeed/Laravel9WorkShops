@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('taggeables', function (Blueprint $table) {
         $table->foreignId('tag_id')->constrained();
-        $table->integer('taggable_id');
-        $table->string('taggable_type');
+        $table->integer('taggeable_id');
+        $table->string('taggeable_type');
         });
     }
 
