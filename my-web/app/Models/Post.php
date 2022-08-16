@@ -5,6 +5,7 @@ namespace App\Models;
 
 use App\Scopes\PostScope;
 use App\Scopes\PostScope as ScopesPostScope;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -79,6 +80,14 @@ class Post extends Model
              // ------Global  Query Scopes------
              public static function booted()
              {
-                static::addGlokbalScope(new PostScope);
-             }
+                // static::addGlokbalScope(new PostScope);
+
+                //------ Remove Global Scope from query------
+                static::addGlobalScope('active', function(Builder $builder) {
+                    $builder->where('is_active', 1);
+                });
+            }
+
+            //------Local Scope-------
+            
 }
