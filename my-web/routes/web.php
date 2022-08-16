@@ -308,7 +308,7 @@ Route::get('test', function(){
 
 Route::resource('posts', PostController::class);
 
-// Route::get('posts/soft-delete/{id}', [PostController::class, 'softDelete'])->name('posts.soft-delete');
+Route::get('posts/soft-delete/{id}', [PostController::class, 'softDelete'])->name('posts.soft-delete');
 
 Route::get('test', function(){
     // $user = User::first();

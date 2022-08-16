@@ -7,6 +7,7 @@ use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Http\Controllers\Toast;
 use App\Routes\Web;
+use App\Scopes\PostScope;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,7 @@ class PostController extends Controller
         // $posts = Post::paginate(10);
 
         // withTrashed() Jo delete hui ho wo displsy ni hoti
+        // active()->
         $posts = Post::withTrashed()->paginate(5);  // Previous & Next Pages
 
         // onlyTrashed() jo delete ni hui hoti
@@ -81,6 +83,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        // return Post::all();
+        // return Post::withoutGlobalScope(new PostScope)->get();
         $post = post::find($id);
         if(! $post){
             abort(403);

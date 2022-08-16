@@ -72,22 +72,25 @@ class Post extends Model
         //     }
 
             //-------- Attribute Casting Part--------
-            protected $casts = [
-                'title' => 'encrypted'      // Encrypted:  Not read able only DB
-             ];
+            // protected $casts = [
+            //     'title' => 'encrypted'      // Encrypted:  Not read able only DB
+            //  ];
 
              // ------Query Scopes------
              // ------Global  Query Scopes------
-             public static function booted()
-             {
-                // static::addGlokbalScope(new PostScope);
+            //  public static function booted()
+            //  {
+            //     static::addGlokbalScope(new PostScope);
 
-                //------ Remove Global Scope from query------
-                static::addGlobalScope('active', function(Builder $builder) {
-                    $builder->where('is_active', 1);
-                });
-            }
+            //     //------ Remove Global Scope from query------
+            //     static::addGlobalScope('active', function(Builder $builder) {
+            //         $builder->where('is_active', 1);
+            //     });
+            // }
 
             //------Local Scope-------
-            
+                public function scopeActive($value)
+                {
+                    $value->where('is_active', 1);
+                }
 }
