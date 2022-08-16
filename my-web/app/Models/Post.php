@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Models;
+
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -30,4 +32,20 @@ class Post extends Model
    {
     return $this->morphToMany(Tag::class, 'taggeable');
    }
+
+   //  use for 7,8 version
+//    public function getTitleAttribute($title)
+//    {
+//     // return ucfirst($title);     // first letter upper case
+//     return strtoupper($title);      // all letter upper case
+//    }
+
+        //  use for 9 version
+    public function title(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => ucfirst($value),
+        );
+
+    }
 }
