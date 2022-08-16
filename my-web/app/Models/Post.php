@@ -41,11 +41,28 @@ class Post extends Model
 //    }
 
         //  use for 9 version
-    public function title(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value) => ucfirst($value),
-        );
+    // public function title(): Attribute
+    // {
+    //     return Attribute::make(
+    //         get: fn ($value) => ucfirst($value),
+    //     );
+        //}
 
-    }
+        //  ------ Mutator----------
+        // we use Mutator : VERSION x8
+        // Why we use Mutator : We Enter the Upper case data but in DB insert lower case
+        // public function setTitleAttribute($value)
+        // {
+        //     return $this->attributes['title'] = strtolower($value);
+        // }
+
+        // we use Mutator : VERSION x9
+
+        protected function title(): Attribute
+            {
+                return Attribute::make(
+                    get: fn($value) => ucfirst($value),
+                    set: fn($value) => strtolower($value),
+                );
+            }
 }

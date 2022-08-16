@@ -16,7 +16,7 @@ class TagSeeder extends Seeder
     public function run()
     {
         Tag::create([
-            'name' => 'Laravel Tag'
+            'name' => 'Laravel 9'
         ]);
     }
 }
