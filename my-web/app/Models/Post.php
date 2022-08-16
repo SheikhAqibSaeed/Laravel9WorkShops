@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+
+use App\Scopes\PostScope;
+use App\Scopes\PostScope as ScopesPostScope;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -71,4 +74,11 @@ class Post extends Model
             protected $casts = [
                 'title' => 'encrypted'      // Encrypted:  Not read able only DB
              ];
+
+             // ------Query Scopes------
+             // ------Global  Query Scopes------
+             public static function booted()
+             {
+                static::addGlokbalScope(new PostScope);
+             }
 }
