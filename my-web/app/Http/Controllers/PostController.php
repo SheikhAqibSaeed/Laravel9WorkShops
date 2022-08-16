@@ -51,20 +51,29 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
+        //  Store image in DB
         $file = $request->file;
-        dd($file);
+        if($file){
+            $fileName = time(). '-' .$file->getClientOriginalName();
+            $filePath = public_path(). '/assets/images';
+            $file->move($filePath, $fileName);
+            // dd($filePath);
+
+            Post::create([
+                'file' => $fileName,
+                'title' => $request->title,
+                'user_id' => 1,
+                'description' => $request->description,
+                'is_publish'=> $request->is_publish,
+                'is_active' => $request->is_active
+            ]);
+        }
+
 
         // Post::create($request->all());
         //      or
         //  One to One Relationship
-        Post::create([
 
-            'title' => $request->title,
-            'user_id' => 1,
-            'description' => $request->description,
-            'is_publish'=> $request->is_publish,
-            'is_active' => $request->is_active
-        ]);
         // dd('Insert Successfully');
 
         $request->session()->flash('alert-success', 'Post Saved Seccessfully!');
