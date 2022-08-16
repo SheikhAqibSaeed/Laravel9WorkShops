@@ -68,13 +68,13 @@ class DatabaseSeeder extends Seeder
         // User::factory()->hasPosts(5)->create();
 
         //  Specific user find
-        $user = User::find(1);
-        if($user){
-            Post::factory()
-            ->count(5)
-            ->for(User::factory())
-            ->create();
-        }
+        // $user = User::find(1);
+        // if($user){
+        //     Post::factory()
+        //     ->count(5)
+        //     ->for(User::factory())
+        //     ->create();
+        // }
 
         //   Reverse   Generate Fake data with Many to Many Relationship
         // Post::factory()
@@ -104,8 +104,13 @@ class DatabaseSeeder extends Seeder
             // ->create();
 
             //      Also use
-            Post::factory()
-            ->hasTag(3,['tag_id' => 1])
-            ->create();
+            // Post::factory()
+            // ->hasTag(3,['tag_id' => 1])
+            // ->create();
+
+            //  for calling seeder by PostSeeder
+            $this->call(
+                PostSeeder::class
+            );
     }
 }
