@@ -109,8 +109,20 @@ class DatabaseSeeder extends Seeder
             // ->create();
 
             //  for calling seeder by PostSeeder
-            $this->call(
-                PostSeeder::class
-            );
+            // $this->call(
+            //     PostSeeder::class
+            // );
+
+            //  Multiple Insert data only one command
+                // Run Seeders and Factories at Once in Laravel
+            User::factory(1)->create();
+            Post::factory(1)->create();
+            Role::factory(1)->create();
+            Tag::factory(1)->create();
+
+            $this->call([
+                PostSeeder::class,
+                TagSeeder::class
+            ]);
     }
 }
