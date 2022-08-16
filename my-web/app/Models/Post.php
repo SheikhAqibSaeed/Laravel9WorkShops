@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+
     use HasFactory, SoftDeletes; // The SoftDeletes trait will automatically cast the deleted_at attribute to a DateTime / Carbon instance for you.
 
     // protected $fillable = [
@@ -48,7 +49,7 @@ class Post extends Model
     //     );
         //}
 
-        //  ------ Mutator----------
+        //  ------ Mutator Part----------
         // we use Mutator : VERSION x8
         // Why we use Mutator : We Enter the Upper case data but in DB insert lower case
         // public function setTitleAttribute($value)
@@ -58,11 +59,16 @@ class Post extends Model
 
         // we use Mutator : VERSION x9
 
-        protected function title(): Attribute
-            {
-                return Attribute::make(
-                    get: fn($value) => ucfirst($value),
-                    set: fn($value) => strtolower($value),
-                );
-            }
+        // protected function title(): Attribute
+        //     {
+        //         return Attribute::make(
+        //             get: fn($value) => ucfirst($value),
+        //             set: fn($value) => strtolower($value),
+        //         );
+        //     }
+
+            //-------- Attribute Casting Part--------
+            protected $casts = [
+                'title' => 'encrypted'      // Encrypted:  Not read able only DB
+             ];
 }
