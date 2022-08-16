@@ -51,11 +51,14 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
+        $file = $request->file;
+        dd($file);
 
         // Post::create($request->all());
         //      or
         //  One to One Relationship
         Post::create([
+
             'title' => $request->title,
             'user_id' => 1,
             'description' => $request->description,

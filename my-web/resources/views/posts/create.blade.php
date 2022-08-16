@@ -23,7 +23,7 @@
 </div>
 @endif
 
-   
+
 
 <!-- Create Post Form -->
 @if (Session::has('alert-success'))
@@ -33,7 +33,7 @@
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
-            <form method="post" action="{{ route('posts.store')}}" style="margin-top: 35px"  id="form">
+            <form method="post" action="{{ route('posts.store')}}" enctype="multipart/form-data" style="margin-top: 35px"  id="form">
 <div class="mb-3">
     <label>Title</label>
     <input type="text" name="title"  class="form-control" placeholder="title" value="{{ old('title') }}">
@@ -58,6 +58,11 @@
         <option @if( old('is_active') == 0) selected @endif value="0">No</option>
     </select>
 </div>
+
+    <div class="mb-3">
+        <label for="file">Image</label><br>
+        <input type="file" name="file" class="form-control">
+    </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
         </div>
