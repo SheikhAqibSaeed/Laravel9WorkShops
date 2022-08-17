@@ -306,9 +306,18 @@ Route::get('test', function(){
 
 });
 
-Route::resource('posts', PostController::class);
+// Route::resource('posts', PostController::class);
 
-Route::get('posts/soft-delete/{id}', [PostController::class, 'softDelete'])->name('posts.soft-delete');
+//  ------Create Seperet URL------
+Route::get('posts', [PostController::class, 'index'])->name('posts.index');
+Route::post('posts', [PostController::class, 'store'])->name('posts.store');
+Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::get('posts/{id}', [PostController::class, 'show'])->name('posts.show');
+Route::get('posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
+Route::put('posts/update/{id}', [PostController::class, 'update'])->name('posts.update');
+Route::delete('posts/destroy/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+
+// Route::get('posts/soft-delete/{id}', [PostController::class, 'softDelete'])->name('posts.soft-delete');
 
 Route::get('test', function(){
     // $user = User::first();
@@ -334,7 +343,7 @@ Route::get('test', function(){
     // $user->roles()->detach($role);   // Delete data
     // return $user->roles;    // get data
 
-    $user = User::first();
+    // $user = User::first();
 
     // $user->roles()->attach([1,2,3]);
 
@@ -346,7 +355,7 @@ Route::get('test', function(){
     // $user = User::first();
     // return $user->image;
 
-    $post = Post::first();
-    return $post->tags;
+    // $post = Post::first();
+    // return $post->tags;
 
 });
