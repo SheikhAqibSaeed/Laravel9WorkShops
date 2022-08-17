@@ -23,7 +23,7 @@ class Post extends Model
     //     'Email',
     // ];
 
-    protected $fillable = ['title', 'user_id', 'description', 'is_publish', 'is_active', 'deleted_at'];
+    protected $fillable = ['title', 'user_id', 'gallery_id', 'description', 'is_publish', 'is_active', 'deleted_at'];
         // OR
         // another method for Eloquent
     // protected $guarded = [];
@@ -93,4 +93,9 @@ class Post extends Model
                 {
                     $value->where('is_active', 1);
                 }
+
+               public function image()
+               {
+                return $this->belongsTo(Gallery::class, 'gallery_id', 'id');
+               }
 }

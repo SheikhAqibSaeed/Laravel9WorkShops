@@ -16,7 +16,7 @@ return new class extends Migration
         //  Difference b/w Table & Create
         // Table tb create krty hy jb ham ny koi column add krna ho & Create tab use hota jab hum table create krna chahty h
         Schema::table('posts', function (Blueprint $table) {
-            $table->foreignId('gallery_id')->after('deleted_at')->constrained();
+            $table->foreignId('gallery_id')->after('user_id')->constrained();
         });
     }
 
