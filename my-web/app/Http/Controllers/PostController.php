@@ -13,6 +13,7 @@ use App\Scopes\PostScope;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 use function PHPUnit\Framework\fileExists;
 
@@ -79,12 +80,17 @@ class PostController extends Controller
                 'type' => Gallery::Type
             ]);
 
+            // Create Slug & generate pretty url
+            // What is slug : Slug basically generate the url of title not a id.
+            $slug = Str::slug($request->title, '-');
+
             // dd($gallery);
             $user = User::first();
             if($user){
                 Post::create([
                     'gallery_id' => $gallery->id,
                     'title' => $request->title,
+                    'slug' => $slug,
                     'user_id' => $user->id,
                     'description' => $request->description,
                     'is_publish'=> $request->is_publish,
@@ -182,7 +188,7 @@ class PostController extends Controller
             abort(404);
         }
 
-        // Delete Image in Laravel | Unlink Image in Laravel 
+        // Delete Image in Laravel | Unlink Image in Laravel
         $file = public_path(). $post->image->name;
 
         if(fileExists($file)){

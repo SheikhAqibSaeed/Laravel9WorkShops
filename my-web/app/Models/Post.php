@@ -16,7 +16,7 @@ class Post extends Model
 
     use HasFactory, SoftDeletes; // The SoftDeletes trait will automatically cast the deleted_at attribute to a DateTime / Carbon instance for you.
 
-   
+
     // protected $fillable = [
     //     'Name',
     //     'Phone',
@@ -24,7 +24,7 @@ class Post extends Model
     //     'Email',
     // ];
 
-    protected $fillable = ['title', 'user_id', 'gallery_id', 'description', 'is_publish', 'is_active', 'deleted_at'];
+    protected $fillable = ['title', 'slug', 'user_id', 'gallery_id', 'description', 'is_publish', 'is_active', 'deleted_at'];
         // OR
         // another method for Eloquent
     // protected $guarded = [];
