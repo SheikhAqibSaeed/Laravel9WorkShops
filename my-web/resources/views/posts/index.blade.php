@@ -47,7 +47,7 @@
                 <tbody>
                     @foreach($posts as $post)
                     <tr>
-                        <td><img src="{{ asset('assets/images/' . $post->image->name) }}" style="width: 50px"></td>
+                        <td><img src="{{ $post->image->name }}" style="width: 50px"></td>
                         <td>{{$post->id}}</td>
                         <td>{{Str::limit($post->title, '4')}}</td>
                         <td>{{Str::limit($post->description, '15')}}</td>

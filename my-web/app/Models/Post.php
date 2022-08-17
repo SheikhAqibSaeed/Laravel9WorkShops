@@ -16,6 +16,7 @@ class Post extends Model
 
     use HasFactory, SoftDeletes; // The SoftDeletes trait will automatically cast the deleted_at attribute to a DateTime / Carbon instance for you.
 
+   
     // protected $fillable = [
     //     'Name',
     //     'Phone',
@@ -98,4 +99,7 @@ class Post extends Model
                {
                 return $this->belongsTo(Gallery::class, 'gallery_id', 'id');
                }
+
+
+
 }
