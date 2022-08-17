@@ -6,6 +6,7 @@ use App\Http\Requests\Post\UpdateRequest;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Http\Controllers\Toast;
+use App\Models\Gallery;
 use App\Routes\Web;
 use App\Scopes\PostScope;
 use Brian2694\Toastr\Facades\Toastr;
@@ -59,8 +60,15 @@ class PostController extends Controller
             $file->move($filePath, $fileName);
             // dd($filePath);
 
+           $gallery = Gallery::create([
+                'name' => $fileName,
+                'type' => Gallery::Type
+            ]);
+
+            dd($gallery);
+
             Post::create([
-                'file' => $fileName,
+                'gallery_id' => $gallery->id,
                 'title' => $request->title,
                 'user_id' => 1,
                 'description' => $request->description,
