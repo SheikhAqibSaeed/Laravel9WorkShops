@@ -14,6 +14,8 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+use function PHPUnit\Framework\fileExists;
+
 class PostController extends Controller
 {
     /**
@@ -29,7 +31,7 @@ class PostController extends Controller
 
         // withTrashed() Jo delete hui ho wo displsy ni hoti
         // active()->
-        $posts = Post::withTrashed()->paginate(5);  // Previous & Next Pages
+        $posts = Post::paginate(5);  // Previous & Next Pages
 
         // onlyTrashed() jo delete ni hui hoti
         // $posts = Post::onlyTrashed()->paginate(5);
@@ -59,14 +61,14 @@ class PostController extends Controller
         if($file){
             $fileName = time(). '-' .$file->getClientOriginalName();
             // $filePath = public_path(). '/assets/images';
-            // $filePath = '/assets/posts/images/';
+            $filePath = '/assets/posts/images/';
 
             //  -----Create your Own File System
-            $filePath = '/';
-            $file = Storage::disk('post')->put($filePath, $file);
+            // $filePath = '/';
+            // $file = Storage::disk('post')->put($filePath, $file);
 
             //---------File Uploads | Upload Image using Storage Disk | Upload files using filesystem
-            // $file = Storage::disk('public')->put($filePath, $file);
+            $file = Storage::disk('public')->put($filePath, $file);
             $fileName = basename($file);
 
             // $file->move($filePath, $fileName);
@@ -175,9 +177,19 @@ class PostController extends Controller
     public function destroy(Request $request, $id)
     {
         $post = post::find($id);
+
         if(! $post){
             abort(404);
         }
+
+        // Delete Image in Laravel | Unlink Image in Laravel 
+        $file = public_path(). $post->image->name;
+
+        if(fileExists($file)){
+            unlink($file);
+        }
+
+
         $post->delete();
         $request->session()->flash('alert-success', 'Post Delete Successfully');
         return to_route('posts.index');

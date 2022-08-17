@@ -12,7 +12,7 @@ class Gallery extends Model
 
     public const Type = 1;
 
-    public $uploads = 'assets/images/';
+    public $uploads = '/storage/assets/posts/images/';
 
     protected $fillable = ['name', 'type'];
 
