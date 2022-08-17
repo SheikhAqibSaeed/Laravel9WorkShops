@@ -12,6 +12,7 @@ use App\Routes\Web;
 use App\Scopes\PostScope;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -57,8 +58,14 @@ class PostController extends Controller
         $file = $request->file;
         if($file){
             $fileName = time(). '-' .$file->getClientOriginalName();
-            $filePath = public_path(). '/assets/images';
-            $file->move($filePath, $fileName);
+            // $filePath = public_path(). '/assets/images';
+            $filePath = '/assets/posts/images/';
+            
+            //---------File Uploads | Upload Image using Storage Disk | Upload files using filesystem
+            $file = Storage::disk('public')->put($filePath, $file);
+            $fileName = basename($file);
+
+            // $file->move($filePath, $fileName);
             // dd($filePath);
 
            $gallery = Gallery::create([
