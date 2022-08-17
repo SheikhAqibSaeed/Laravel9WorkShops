@@ -59,10 +59,14 @@ class PostController extends Controller
         if($file){
             $fileName = time(). '-' .$file->getClientOriginalName();
             // $filePath = public_path(). '/assets/images';
-            $filePath = '/assets/posts/images/';
-            
+            // $filePath = '/assets/posts/images/';
+
+            //  -----Create your Own File System
+            $filePath = '/';
+            $file = Storage::disk('post')->put($filePath, $file);
+
             //---------File Uploads | Upload Image using Storage Disk | Upload files using filesystem
-            $file = Storage::disk('public')->put($filePath, $file);
+            // $file = Storage::disk('public')->put($filePath, $file);
             $fileName = basename($file);
 
             // $file->move($filePath, $fileName);
