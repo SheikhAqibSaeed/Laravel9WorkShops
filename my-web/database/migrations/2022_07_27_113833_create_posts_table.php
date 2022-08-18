@@ -27,7 +27,7 @@ return new class extends Migration
             // $table->integer('user_id');
             $table->foreignId('user_id')->constrained();    // constrained() fix id we not change the id
             $table->string('title');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->char('description');
             $table->boolean('is_publish');
             $table->timestamps();

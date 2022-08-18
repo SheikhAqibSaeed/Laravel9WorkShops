@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\Post\CreateRequest;
 use App\Http\Requests\Post\UpdateRequest;
-use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Http\Controllers\Toast;
+use App\Http\Requests\CreateRequest as RequestsCreateRequest;
 use App\Models\Gallery;
 use App\Models\User;
 use App\Routes\Web;
 use App\Scopes\PostScope;
 use Brian2694\Toastr\Facades\Toastr;
-use Illuminate\Http\Request;
+use Illuminate\Http\Requests;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -55,7 +55,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostRequest $request, )
+    public function store(CreateRequest $request)
     {
         //  Store image in DB
         $file = $request->file;
@@ -82,7 +82,7 @@ class PostController extends Controller
 
             // Create Slug & generate pretty url
             // What is slug : Slug basically generate the url of title not a id.
-            $slug = Str::slug($request->title. str::random(1,10), '-');     // str::random means unique value 
+            $slug = Str::slug($request->title. str::random(1,10), '-');     // str::random means unique value
 
             // dd($gallery);
             $user = User::first();
@@ -142,12 +142,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        $post = post::find($id);
-        if(! $post){
-            abort(404);
-        }
+        // $post = post::find($id);
+        // if(! $post){
+        //     abort(404);
+        // }
         return view('posts.edit' , compact('post'));
     }
 
@@ -158,15 +158,18 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PostRequest $request, $id)
+    public function update(UpdateRequest $request, Post $post)
     {
+        $slug = Str::slug($request->title. str::random(1,10), '-');     // str::random means unique value
 
-        $post = post::find($id);
-        if(! $post){
-            abort(404);
-        }
+
+        // $post = post::find($id);
+        // if(! $post){
+        //     abort(404);
+        // }
         $post->update([
             'title' => $request->title,
+            'slug' => $slug,
             'description' => $request->description,
             'is_publish'=> $request->is_publish,
             'is_active' => $request->is_active
@@ -180,18 +183,18 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request, Post $post)
     {
-        $post = post::find($id);
+        // $post = post::find($id);
 
-        if(! $post){
-            abort(404);
-        }
+        // if(! $post){
+        //     abort(404);
+        // }
 
         // Delete Image in Laravel | Unlink Image in Laravel
         $file = public_path(). $post->image->name;
 
-        if(fileExists($file)){
+        if(Storage::exists($file)){
             unlink($file);
         }
 

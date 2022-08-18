@@ -38,8 +38,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif
-            <form method="post" action="{{ route('posts.update', $post->id)}}" style="margin-top: 35px" id="form">
-            @csrf 
+            <form method="post" action="{{ route('posts.update', $post->slug)}}" style="margin-top: 35px" id="form">
+            @csrf
                @method('PUT')
             <div class="mb-3">
                     <label>Title</label>
