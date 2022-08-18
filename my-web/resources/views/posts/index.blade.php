@@ -55,11 +55,11 @@
                         <td>{{$post->is_publish == '1' ? 'Yes' : 'No'}}</td>
                         <td>{{$post->is_active  == '1' ? 'Yes' : 'No'}}</td>
                         <td id="outer">
-                            <a href="{{ route('posts.show', $post->id) }}" class="btn btn-success inner"><i
+                            <a href="{{ route('posts.show', $post->slug) }}" class="btn btn-success inner"><i
                                     class="fa fa-eye"></i></a>
-                            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info inner"><i
+                            <a href="{{ route('posts.edit', $post->slug) }}" class="btn btn-info inner"><i
                                     class="fa fa-edit"></i></a>
-                            <form method="post" class="inner" action="{{ route('posts.destroy', $post->id)}}">
+                            <form method="post" class="inner" action="{{ route('posts.destroy', $post->slug)}}">
                                 @csrf
                                 @method('delete')
                                 <button class="btn btn-danger"><i class="fa fa-trash"></i></button>

@@ -82,7 +82,7 @@ class PostController extends Controller
 
             // Create Slug & generate pretty url
             // What is slug : Slug basically generate the url of title not a id.
-            $slug = Str::slug($request->title, '-');
+            $slug = Str::slug($request->title. str::random(1,10), '-');     // str::random means unique value 
 
             // dd($gallery);
             $user = User::first();
@@ -125,14 +125,14 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
         // return Post::all();
         // return Post::withoutGlobalScope(new PostScope)->get();
-        $post = post::find($id);
-        if(! $post){
-            abort(403);
-        }
+        // $post = post::find($id);
+        // if(! $post){
+        //     abort(403);
+        // }
         return view('posts.show', ['post' => $post]);
     }
 

@@ -100,6 +100,9 @@ class Post extends Model
                 return $this->belongsTo(Gallery::class, 'gallery_id', 'id');
                }
 
-
+               public function getRouteKeyName()
+               {
+                return 'slug';
+               }
 
 }
