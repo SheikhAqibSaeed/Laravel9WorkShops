@@ -10,5 +10,7 @@ class ClientModel extends Model
     use HasFactory;
 
     protected $table = 'clientmodel';
-    protected $fillable = ['name', 'email', 'address'];
+    protected $fillable = ['name', 'email'];
+
+    public $timestamps=false;
 }

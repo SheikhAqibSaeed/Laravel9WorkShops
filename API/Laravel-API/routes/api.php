@@ -18,13 +18,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+
+
 });
 
 //      Make First Simplest API
 // Route::get("getData", [ApiController::class, 'getdata']);
 
 
-Route::get("lists", [DBController::class, 'list']);
+// Route::get("lists", [DBController::class, 'list']);
 
 //      Get API with Parameter
-Route::get("lists/{id}", [DBController::class, 'listparam']);
+// Route::get("lists/{id}", [DBController::class, 'listparam']);
+
+//      Post API
+Route::post("adds", [DBController::class, 'post']);
+
