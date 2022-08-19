@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\DBController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //      Make First Simplest API
-Route::get("getData", [ApiController::class, 'getdata']);
+// Route::get("getData", [ApiController::class, 'getdata']);
+
+
+Route::get("lists", [DBController::class, 'list']);
+
+//      Get API with Parameter
+Route::get("lists/{id}", [DBController::class, 'listparam']);
