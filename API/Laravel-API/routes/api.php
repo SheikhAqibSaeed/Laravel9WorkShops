@@ -34,3 +34,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //      Post API
 Route::post("adds", [DBController::class, 'post']);
 
+//      PUT API
+Route::put("updatedata", [DBController::class, 'update']);
+

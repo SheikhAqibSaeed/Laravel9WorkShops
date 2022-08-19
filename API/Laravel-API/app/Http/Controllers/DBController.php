@@ -37,4 +37,22 @@ class DBController extends Controller
         }
 
     }
+
+    // Put API
+    //Save data in database using Put Method
+    function update(Request $req)
+    {
+        $clientmodel = ClientModel::find($req->id);
+        $clientmodel->name=$req->name;
+        $clientmodel->email=$req->email;
+        $result=$clientmodel->save();
+        if($result)
+        {
+            return ["Result"=>"Data Updated Successfully"];
+        }
+        else
+        {
+            return ["Result"=>"Data Update Failed"];
+        }
+    }
 }
