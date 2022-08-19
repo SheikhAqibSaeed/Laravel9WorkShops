@@ -36,4 +36,5 @@ Route::post("adds", [DBController::class, 'post']);
 
 //      PUT API
 Route::put("updatedata", [DBController::class, 'update']);
-
+//   Search data in database using API in LARAVEL
+Route::get("searchdata/{name}", [DBController::class, 'search']);

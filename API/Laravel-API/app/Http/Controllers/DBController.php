@@ -55,4 +55,11 @@ class DBController extends Controller
             return ["Result"=>"Data Update Failed"];
         }
     }
+
+    // Search data in database using API in LARAVEL
+    function search($name)
+    {
+        // ("name", "like", "%" . $name . "%") means if one latter search then also Details show
+        return ClientModel::where("name", "like", "%" . $name . "%")->get();
+    }
 }
