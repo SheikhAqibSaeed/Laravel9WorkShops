@@ -62,4 +62,20 @@ class DBController extends Controller
         // ("name", "like", "%" . $name . "%") means if one latter search then also Details show
         return ClientModel::where("name", "like", "%" . $name . "%")->get();
     }
+
+    //  Delete Data using API in LARAVEL
+    function delete($id)
+    {
+        $clientmodel = ClientModel::find($id);
+        $result = $clientmodel->delete();
+        if($result)
+        {
+            return ["return"=> "Data Deleted Successfully.."];
+        }
+        else
+        {
+            return ["return"=> "Data Deleted Failed.."];
+
+        }
+    }
 }

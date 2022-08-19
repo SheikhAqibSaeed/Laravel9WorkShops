@@ -38,3 +38,6 @@ Route::post("adds", [DBController::class, 'post']);
 Route::put("updatedata", [DBController::class, 'update']);
 //   Search data in database using API in LARAVEL
 Route::get("searchdata/{name}", [DBController::class, 'search']);
+
+//  Delete Data using API in LARAVEL
+Route::delete("deletedata/{id}", [DBController::class, 'delete']);
