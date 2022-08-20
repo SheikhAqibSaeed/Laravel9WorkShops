@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\DBController;
+use App\Http\Controllers\MemberController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -42,5 +43,8 @@ Route::get("searchdata/{name}", [DBController::class, 'search']);
 //  Delete Data using API in LARAVEL
 Route::delete("deletedata/{id}", [DBController::class, 'delete']);
 
-// Validation API 
+// Validation API
 Route::post("validate", [DBController::class, 'validator']);
+
+
+Route::Resource("resource", MemberController::class);
