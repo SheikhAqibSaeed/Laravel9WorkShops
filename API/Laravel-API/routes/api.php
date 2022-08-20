@@ -46,5 +46,5 @@ Route::delete("deletedata/{id}", [DBController::class, 'delete']);
 // Validation API
 Route::post("validate", [DBController::class, 'validator']);
 
-
+// Resources API
 Route::Resource("resource", MemberController::class);

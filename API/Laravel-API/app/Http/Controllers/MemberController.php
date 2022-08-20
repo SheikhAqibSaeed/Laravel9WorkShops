@@ -14,7 +14,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return ClientModel::all();
+        return ClientModel::all();  // all data fetch form DB
     }
 
     /**
