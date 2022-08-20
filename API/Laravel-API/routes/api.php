@@ -41,3 +41,6 @@ Route::get("searchdata/{name}", [DBController::class, 'search']);
 
 //  Delete Data using API in LARAVEL
 Route::delete("deletedata/{id}", [DBController::class, 'delete']);
+
+// Validation API 
+Route::post("validate", [DBController::class, 'validator']);

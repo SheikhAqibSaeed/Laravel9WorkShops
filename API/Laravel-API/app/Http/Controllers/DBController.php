@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\ClientModel;
+use Dotenv\Validator as DotenvValidator;
+use Illuminate\Contracts\Validation\Validator as ValidationValidator;
+use Illuminate\Http\Client\Response;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
 class DBController extends Controller
 {
     // Get data with API form DB
@@ -64,17 +67,45 @@ class DBController extends Controller
     }
 
     //  Delete Data using API in LARAVEL
-    function delete($id)
+    // function delete($id)
+    // {
+    //     $clientmodel = ClientModel::find($id);
+    //     $result = $clientmodel->delete();
+    //     if($result)
+    //     {
+    //         return ["return"=> "Data Deleted Successfully.."];
+    //     }
+    //     else
+    //     {
+    //         return ["return"=> "Data Deleted Failed.."];
+
+    //     }
+    // }
+
+    function validator(Request $req)
     {
-        $clientmodel = ClientModel::find($id);
-        $result = $clientmodel->delete();
+        // Simplest function Validation API in Postman
+        $rules = array(
+            "name"=>"required|min:3|max:15"
+        );
+        $validator = Validator::make($req->all(),$rules);
+        if($validator->fails()){
+            return Response()->json( $validator->errors(),404);
+        }
+        else{
+            // Post data in Database from Postman
+        $clientmodel = new ClientModel;
+        $clientmodel->name=$req->name;
+        $clientmodel->email=$req->email;
+        $result=$clientmodel->save();
         if($result)
         {
-            return ["return"=> "Data Deleted Successfully.."];
+            return ["Result"=>"Data Saved Successfully"];
         }
         else
         {
-            return ["return"=> "Data Deleted Failed.."];
+            return ["Result"=>"Data Not Save Failed"];
+        }
 
         }
     }
